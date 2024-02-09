@@ -23,7 +23,6 @@ def blog_view(request):
     paginator = Paginator(posts, 6)
     d = {
         'posts': paginator.page(page),
-        'cat_id': cat
     }
 
     return render(request, 'blog.html', d)
