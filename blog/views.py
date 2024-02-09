@@ -20,11 +20,7 @@ def blog_view(request):
     else:
         posts = Post.objects.filter(is_published=True).order_by('-created_at')
 
-    paginator = Paginator(posts, 6) \
- \
-    #
-
-    #
+    paginator = Paginator(posts, 6)
     d = {
         'posts': paginator.page(page),
         'cat_id': cat
