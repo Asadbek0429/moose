@@ -16,7 +16,7 @@
     <section class="ftco-section">
         <div class="container-fluid">
             <div class="row">
-                {% for post in posts %}
+                {% for post in posts.page %}
                     <div class="col-md-6 col-lg-4 blog-wrap blog-wrap-2 px-md-5 ftco-animate">
                         <a href="/blog/{{ post.id }}" class="img img-blog w-100 border d-block"
                            style="background-image: url({{ post.image.url }});">
@@ -53,11 +53,11 @@
                             {% else %}
                                 <li><span><</span></li>
                             {% endif %}
-                            {% for page in posts.paginator.page_range %}
+                            {% for page in posts.page_range %}
                                 {% if page == posts.number %}
-                                    <li class="active"><span>{{ page }}</span></li>
+                                    <li class="active"><span>{{ page|add:"1" }}</span></li>
                                 {% else %}
-                                    <li><a href="/blog/?p={{ page }}">{{ page }}</a></li>
+                                    <li><a href="/blog/?p={{ page }}">{{ page|add:"1" }}</a></li>
                                 {% endif %}
                             {% endfor %}
                             {% if posts.has_next %}
@@ -69,26 +69,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="ftco-intro ftco-section bg-light">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-12 text-center">
-                    <h2>Subscribe to our Newsletter</h2>
-                    <div class="row justify-content-center">
-                        <div class="col-md-5">
-                            <form action="#" class="subscribe-form">
-                                <div class="form-group d-flex">
-                                    <input type="text" class="form-control" placeholder="Enter email address">
-                                    <input type="submit" value="Subscribe" class="submit px-3">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         </div>
     </section>
 {% endblock %}
